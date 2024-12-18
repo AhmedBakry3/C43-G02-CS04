@@ -209,20 +209,18 @@ namespace Assignment_Session4
             ///Expected Output :
             ///The Binary of 25 is 11001.
 
-            Console.Write("Enter a number to convert: ");
-            int.TryParse(Console.ReadLine(), out int decimalNumber);
-
-            string binaryResult = "";
-
-            while (decimalNumber > 0)
-            {
-
-                binaryResult = (decimalNumber % 2) + binaryResult;
-
-                decimalNumber = decimalNumber / 2;
-            }
-
-            Console.WriteLine($"The Binary of the number is: {binaryResult}"); //11001
+                int decimalNumber = 25;
+                
+                string binaryResult = "";
+                
+                while (decimalNumber > 0)
+                {
+                    binaryResult = (decimalNumber % 2) + binaryResult;
+                    decimalNumber = decimalNumber / 2;
+                }
+                
+                // Output the binary result
+                Console.WriteLine($"The Binary of 25 is {binaryResult}"); // //11001
 
 
             #endregion
