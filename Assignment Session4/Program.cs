@@ -282,76 +282,32 @@ namespace Assignment_Session4
 
             #region 12- Write a program in C# Sharp to find the sum of all elements of the array.
 
-            Console.Write("Enter the number of elements in the array: ");
 
-            bool isParsed = int.TryParse(Console.ReadLine(), out int size);
-
-            if (!isParsed || size <= 0)
-            {
-                Console.WriteLine("Please enter a valid positive integer.");
-            }
-
-            int[] numbers = new int[size];
-
-            Console.WriteLine($"Enter {size} elements:");
-
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-
-                if (!int.TryParse(Console.ReadLine(), out numbers[i]))
-                {
-                    Console.WriteLine("Please enter a valid integer.");
-                    return;
-                }
-            }
-
+            int[] numbers = { 10, 20, 30, 40, 50 }; 
             int sum = 0;
-            for (int i = 0; i < size; i++)
+
+            for (int i = 0; i < numbers.Length; i++)
             {
                 sum += numbers[i];
             }
 
             Console.WriteLine($"The sum of all elements in the array is: {sum}");
 
-
             #endregion
 
             #region 13- Write a program in C# Sharp to merge two arrays of the same size sorted in ascending order.
 
-            Console.Write("Enter the number of elements in the arrays: ");
-            int.TryParse(Console.ReadLine(), out int size);
-
-            int[] array1 = new int[size];
-            int[] array2 = new int[size];
-
-            // Input values for the first array
-            Console.WriteLine("Enter the values for the first array:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                array1[i] = int.Parse(Console.ReadLine());
-            }
-
-            // Input values for the second array
-            Console.WriteLine("Enter the values for the second array:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                array2[i] = int.Parse(Console.ReadLine());
-            }
-
+            int[] array1 = { 1, 3, 5, 7, 9 };
+            int[] array2 = { 2, 4, 6, 8, 10 };
+    
             // Merge the two arrays
-            int[] mergedArray = new int[size * 2];
-            for (int i = 0; i < size; i++)
-            {
-                mergedArray[i] = array1[i];
-                mergedArray[size + i] = array2[i];
-            }
-
+            int[] mergedArray = new int[array1.Length + array2.Length];
+            array1.CopyTo(mergedArray, 0);  
+            array2.CopyTo(mergedArray, array1.Length);  
+    
             // Sort the merged array in ascending order
             Array.Sort(mergedArray);
-
+    
             // Print the sorted merged array
             Console.WriteLine("The merged and sorted array is:");
             foreach (int item in mergedArray)
@@ -364,54 +320,38 @@ namespace Assignment_Session4
             #region 14- Write a program in C# Sharp to count the frequency of each element of an array.
 
 
-            Console.Write("Enter the number of elements in the array: ");
-            bool isParsed = int.TryParse(Console.ReadLine(), out int size);
+           int[] array = { 1, 2, 2, 3, 3, 3, 4, 4, 4, 4 };
 
-            if (!isParsed || size <= 0)
-            {
-                Console.WriteLine("Please enter a valid positive number.");
-            }
+           Console.WriteLine("Frequency of each element in the array:");
 
-            int[] array = new int[size];
+           for (int i = 0; i < array.Length; i++)
+           {
+               bool alreadyCounted = false;
 
-            Console.WriteLine($"Enter {size} elements:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out array[i]))
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                }
-            }
+               // Check if element is already counted
+               for (int j = 0; j < i; j++)
+               {
+                   if (array[i] == array[j])
+                   {
+                       alreadyCounted = true;
+                       break;
+                   }
+               }
 
-            Console.WriteLine("Frequency of each element in the array:");
+               if (!alreadyCounted)
+               {
+                   int count = 0;
+                   for (int k = 0; k < array.Length; k++)
+                   {
+                       if (array[i] == array[k])
+                       {
+                           count++;
+                       }
+                   }
 
-            for (int i = 0; i < size; i++)
-            {
-                bool alreadyCounted = false;
-                for (int j = 0; j < i; j++)
-                {
-                    if (array[i] == array[j])
-                    {
-                        alreadyCounted = true;
-                        break;
-                    }
-                }
-
-                if (!alreadyCounted)
-                {
-                    int count = 0;
-                    for (int k = 0; k < size; k++)
-                    {
-                        if (array[i] == array[k])
-                        {
-                            count++;
-                        }
-                    }
-
-                    Console.WriteLine($"Element {array[i]} occurs {count} time(s)");
-                }
-            }
+                   Console.WriteLine($"Element {array[i]} occurs {count} time(s)");
+               }
+           }
 
 
 
@@ -419,29 +359,12 @@ namespace Assignment_Session4
 
             #region 15- Write a program in C# Sharp to find maximum and minimum element in an array
 
-            Console.Write("Enter the number of elements in the array: ");
-            bool isParsed = int.TryParse(Console.ReadLine(), out int size);
-            if (!isParsed || size <= 0)
-            {
-                Console.WriteLine("Please enter a valid positive Number");
-            }
-
-            int[] array = new int[size];
-
-            Console.WriteLine($"Enter {size} elements:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out array[i]))
-                {
-                    Console.WriteLine("Please enter a valid Number");
-                }
-            }
-
+            int[] array = { 5, 3, 8, 1, 6 };
+    
             int max = array[0];
             int min = array[0];
-
-            for (int i = 1; i < size; i++)
+    
+            for (int i = 1; i < array.Length; i++)
             {
                 if (array[i] > max)
                 {
@@ -452,62 +375,41 @@ namespace Assignment_Session4
                     min = array[i];
                 }
             }
-
+    
             Console.WriteLine($"The maximum element in the array is: {max}");
             Console.WriteLine($"The minimum element in the array is: {min}");
-
 
 
             #endregion
 
             #region 16- Write a program in C# Sharp to find the second largest element in an array.
-
-            Console.Write("Enter the number of elements in the array: ");
-
-            bool isParsed = int.TryParse(Console.ReadLine(), out int size);
-            if (!isParsed || size <= 0)
-            {
-                Console.WriteLine("Please enter a valid positive integer greater than 1.");
-            }
-
-            int[] array = new int[size];
-
-            Console.WriteLine($"Enter {size} elements:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out array[i]))
-                {
-                    Console.WriteLine("Please enter a valid integer.");
-                    return;
-                }
-            }
-
-            int largest = int.MinValue;
-            int secondLargest = int.MinValue;
-
-
-            for (int i = 0; i < size; i++)
-            {
-                if (array[i] > largest)
-                {
-                    secondLargest = largest;
-                    largest = array[i];
-                }
-                else if (array[i] > secondLargest && array[i] != largest)
-                {
-                    secondLargest = array[i];
-                }
-            }
-
-            if (secondLargest == int.MinValue)
-            {
-                Console.WriteLine("There is no second largest element. All elements are the same.");
-            }
-            else
-            {
-                Console.WriteLine($"The second largest element in the array is: {secondLargest}");
-            }
+                    int[] array = { 10, 20, 4, 30, 20, 50 };
+            
+                    int largest = int.MinValue;
+                    int secondLargest = int.MinValue;
+            
+                    // Find the largest and second largest elements
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        if (array[i] > largest)
+                        {
+                            secondLargest = largest;
+                            largest = array[i];
+                        }
+                        else if (array[i] > secondLargest && array[i] != largest)
+                        {
+                            secondLargest = array[i];
+                        }
+                    }
+            
+                    if (secondLargest == int.MinValue)
+                    {
+                        Console.WriteLine("There is no second largest element. All elements are the same.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"The second largest element in the array is: {secondLargest}");
+                    }
 
             #endregion
 
@@ -516,44 +418,34 @@ namespace Assignment_Session4
             ///In the example above, the longest distance is between the first 7 and the
             ///10th 7, with a distance of 8 cells, i.e.the number of cells between the 1st
             ///And the 10th 7s.
-
-            Console.Write("Enter the number of elements in the array: ");
-            int.TryParse(Console.ReadLine(), out int size);
-
-            int[] array = new int[size];
-
-            Console.WriteLine("Enter the values for the array:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                array[i] = int.Parse(Console.ReadLine());
-            }
-
-            Dictionary<int, int> firstOccurrence = new Dictionary<int, int>();
-            int maxDistance = -1; 
-
-            for (int i = 0; i < size; i++)
-            {
-                if (firstOccurrence.ContainsKey(array[i]))
+    
+               int[] array = { 7, 1, 3, 7, 5, 6, 7, 8, 9, 7 };
+        
+                Dictionary<int, int> firstOccurrence = new Dictionary<int, int>();
+                int maxDistance = -1;
+        
+                // Iterate through the array
+                for (int i = 0; i < array.Length; i++)
                 {
-                    int distance = i - firstOccurrence[array[i]] - 1;
-                    maxDistance = Math.Max(maxDistance, distance);
+                    if (firstOccurrence.ContainsKey(array[i]))
+                    {
+                        int distance = i - firstOccurrence[array[i]] - 1;
+                        maxDistance = Math.Max(maxDistance, distance);
+                    }
+                    else
+                    {
+                        firstOccurrence[array[i]] = i;
+                    }
+                }
+        
+                if (maxDistance >= 0)
+                {
+                    Console.WriteLine($"The longest distance between two equal cells is: {maxDistance}");
                 }
                 else
                 {
-                    firstOccurrence[array[i]] = i;
+                    Console.WriteLine("No equal elements found to measure distance.");
                 }
-            }
-
-            if (maxDistance >= 0)
-            {
-                Console.WriteLine($"The longest distance between two equal cells is: {maxDistance}");
-            }
-            else
-            {
-                Console.WriteLine("No equal elements found to measure distance.");
-            }
-
 
             #endregion
 
@@ -566,89 +458,57 @@ namespace Assignment_Session4
             //Check the Split Function(Member in String Class) Output will be a Single Console.WriteLine Statement
 
 
-            Console.Write("Enter a list of space-separated words: ");
-            string input = Console.ReadLine();
+                string input = "this is a test"; // You can change this to any string
 
-            // Split the input string
-            string[] words = input.Split(' ');
-
-            // Reverse the array 
-            Array.Reverse(words);
-
-            string reversed = string.Join(" ", words);
-            Console.WriteLine(reversed);
-
+                // Split the input string
+                    string[] words = input.Split(' ');
+                    
+                // Reverse the array 
+                    Array.Reverse(words);
+                    
+                // Join the words back into a string
+                    string reversed = string.Join(" ", words);
+                    
+                    Console.WriteLine(reversed);
 
             #endregion
 
             #region 19- Write a program to create two multidimensional arrays of same size. Accept value from user and store them in first array. Now copy all the elements of first array on second array and print second array.
-
-            Console.Write("Enter the number of rows: ");
-            int.TryParse(Console.ReadLine(), out int rows);
-
-            Console.Write("Enter the number of columns: ");
-            int.TryParse(Console.ReadLine(), out int columns);
-
-            int[,] array1 = new int[rows, columns];
-            int[,] array2 = new int[rows, columns];
-
-
-            Console.WriteLine("Enter the values for the first array:");
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
+                
+                int[,] array1 = { {1, 2, 3}, {4, 5, 6} };
+                int[,] array2 = new int[2, 3]; // Array to store copied values
+                
+                // Copy elements from array1 to array2
+                for (int i = 0; i < 2; i++)
                 {
-                    Console.Write($"Element [{i},{j}]: ");
-                    array1[i, j] = int.Parse(Console.ReadLine());
+                    for (int j = 0; j < 3; j++)
+                    {
+                        array2[i, j] = array1[i, j];
+                    }
                 }
-            }
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
+                
+                // Output the elements of the second array
+                Console.WriteLine("\nThe elements of the second array are:");
+                for (int i = 0; i < 2; i++)
                 {
-                    array2[i, j] = array1[i, j];
+                    for (int j = 0; j < 3; j++)
+                    {
+                        Console.Write(array2[i, j] + " ");
+                    }
+                    Console.WriteLine();
                 }
-            }
-
-            Console.WriteLine("\nThe elements of the second array are:");
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    Console.Write(array2[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
             #endregion
 
             #region 20- Write a Program to Print One Dimensional Array in Reverse Order
 
-            Console.Write("Enter the number of elements in the array: ");
-            bool isParsed = int.TryParse(Console.ReadLine(), out int size);
-            // Validate input
-            if (!isParsed || size <= 0)
-            {
-                Console.WriteLine("Please enter a valid positive integer.");
-            }
-
-            int[] array = new int[size];
-
-            Console.WriteLine($"Enter {size} elements:");
-            for (int i = 0; i < size; i++)
-            {
-                Console.Write($"Element {i + 1}: ");
-                if (!int.TryParse(Console.ReadLine(), out array[i]))
+                int[] array = { 1, 2, 3, 4, 5 }; 
+                
+                Console.WriteLine("The array in reverse order is:");
+                
+                for (int i = array.Length - 1; i >= 0; i--)
                 {
-                    Console.WriteLine("Please enter a valid integer.");
+                    Console.Write(array[i] + " ");
                 }
-            }
-
-            Console.WriteLine("The array in reverse order is:");
-            for (int i = size - 1; i >= 0; i--)
-            {
-                Console.Write(array[i] + " ");
-            }
 
 
             #endregion
