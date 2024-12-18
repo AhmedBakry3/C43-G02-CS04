@@ -222,7 +222,7 @@ namespace Assignment_Session4
                 decimalNumber = decimalNumber / 2;
             }
 
-            Console.WriteLine($"The Binary of the number is: {binaryResult}");
+            Console.WriteLine($"The Binary of the number is: {binaryResult}"); //11001
 
 
             #endregion
