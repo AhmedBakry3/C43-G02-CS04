@@ -1,4 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel;
 using System.Diagnostics.Metrics;
 using System.ComponentModel.Design;
@@ -453,7 +453,6 @@ namespace Assignment_Session4
                 }
             }
 
-            // Output the maximum and minimum elements
             Console.WriteLine($"The maximum element in the array is: {max}");
             Console.WriteLine($"The minimum element in the array is: {min}");
 
