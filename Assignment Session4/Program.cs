@@ -126,9 +126,9 @@ namespace Assignment_Session4
             int averageMarks = totalMarks / numberOfSubjects; // Calculate average 
             int percentage = (totalMarks * 100) / (numberOfSubjects * 100);  // Calculate percentage
 
-            Console.WriteLine($"Total Marks = {totalMarks}");
-            Console.WriteLine($"Average Marks = {averageMarks}");
-            Console.WriteLine($"Percentage = {percentage}%");
+            Console.WriteLine($"Total Marks = {totalMarks}"); //408
+            Console.WriteLine($"Average Marks = {averageMarks}"); //81
+            Console.WriteLine($"Percentage = {percentage}%"); //81%
 
             #endregion
 
@@ -136,7 +136,6 @@ namespace Assignment_Session4
 
             Console.Write("Please Enter a string : ");
             string name = Console.ReadLine();
-
 
             for (int i = name.Length - 1; i >= 0; i--)
             {
@@ -148,14 +147,21 @@ namespace Assignment_Session4
 
             #region 7 - Write a program to allow the user to enter int and print the REVERSED of it.
 
-            Console.Write("Please Enter a Number : ");
-            string number = Console.ReadLine();
+          
+                Console.Write("Please Enter a Number: ");
+                string input = Console.ReadLine();
 
-
-            for (int i = number.Length - 1; i >= 0; i--)
-            {
-                Console.Write(number[i]); // input: 12345 , Output : 54321
-            }
+                if (int.TryParse(input, out int number))
+                {
+                    for (int i = input.Length - 1; i >= 0; i--)
+                    {
+                        Console.Write(input[i]);  //input:12345 , output:54321
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid Number");
+                }
 
 
             #endregion
@@ -175,7 +181,6 @@ namespace Assignment_Session4
 
             for (int num = start; num <= end; num++)
             {
-                // Skip 1 because it's not a prime number
                 if (num <= 1)
                     continue;
 
@@ -186,11 +191,10 @@ namespace Assignment_Session4
                     if (num % i == 0)
                     {
                         isPrime = false;
-                        break; // No need to check further if the number is divisible
+                        break; 
                     }
                 }
 
-                // If the number is prime, print it
                 if (isPrime)
                 {
                     Console.Write(num + " "); //2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
@@ -515,12 +519,10 @@ namespace Assignment_Session4
             ///And the 10th 7s.
 
             Console.Write("Enter the number of elements in the array: ");
-            int size = int.Parse(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out int size);
 
-            // Declare the array
             int[] array = new int[size];
 
-            // Accept values from the user
             Console.WriteLine("Enter the values for the array:");
             for (int i = 0; i < size; i++)
             {
@@ -528,27 +530,22 @@ namespace Assignment_Session4
                 array[i] = int.Parse(Console.ReadLine());
             }
 
-            // Dictionary to store the first occurrence index of each element
             Dictionary<int, int> firstOccurrence = new Dictionary<int, int>();
-            int maxDistance = -1; // To store the maximum distance found
+            int maxDistance = -1; 
 
-            // Iterate through the array to find the longest distance between two equal cells
             for (int i = 0; i < size; i++)
             {
                 if (firstOccurrence.ContainsKey(array[i]))
                 {
-                    // Calculate the distance from the first occurrence to the current index
                     int distance = i - firstOccurrence[array[i]] - 1;
                     maxDistance = Math.Max(maxDistance, distance);
                 }
                 else
                 {
-                    // Store the first occurrence of the element
                     firstOccurrence[array[i]] = i;
                 }
             }
 
-            // Output the result
             if (maxDistance >= 0)
             {
                 Console.WriteLine($"The longest distance between two equal cells is: {maxDistance}");
