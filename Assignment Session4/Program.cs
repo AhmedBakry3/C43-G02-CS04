@@ -476,9 +476,8 @@ namespace Assignment_Session4
             #region 19- Write a program to create two multidimensional arrays of same size. Accept value from user and store them in first array. Now copy all the elements of first array on second array and print second array.
                 
                 int[,] array1 = { {1, 2, 3}, {4, 5, 6} };
-                int[,] array2 = new int[2, 3]; // Array to store copied values
+                int[,] array2 = new int[2, 3]; 
                 
-                // Copy elements from array1 to array2
                 for (int i = 0; i < 2; i++)
                 {
                     for (int j = 0; j < 3; j++)
@@ -487,7 +486,6 @@ namespace Assignment_Session4
                     }
                 }
                 
-                // Output the elements of the second array
                 Console.WriteLine("\nThe elements of the second array are:");
                 for (int i = 0; i < 2; i++)
                 {
